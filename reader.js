@@ -221,7 +221,7 @@
       if (!log) return;
 
       openFile = file;
-      frame.src = file + (jump ? `?${jump}` : "");
+      frame.src = "./" + file + (jump ? `?${jump}` : "");
       frame.hidden = false;
       empty.hidden = true;
 
