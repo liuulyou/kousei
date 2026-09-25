@@ -832,12 +832,9 @@ html.in-pane body .ttobot-status[data-account="@astra_dame"] .ttobot-time {
   }
 }
 
-/* 오른쪽 말풍선 꼬리만 오른쪽에 밀착 정렬 */
-.ttobot-chat.right .ttobot-bubble::before,
-.ttobot-chat.right .ttobot-bubble::after,
-.chat-item.right .bubble::before,
-.chat-item.right .bubble::after {
-  left: auto !important;     /* 왼쪽 기준 해제 */
-  right: -5px !important;    /* 오른쪽 edge에 딱 붙임 */
-  top: 10px !important;      /* 높이 맞춤 */
+/* 오른쪽 말풍선 꼬리 분리 현상 정렬 */
+.chat-row.right .chat-bubble::after {
+  left: auto !important;
+  right: -6px !important;   /* 네모 본체 우측 끝에 바짝 밀착 */
+  top: 12px !important;     /* Y축 높이 정렬 */
 }
