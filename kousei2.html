@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>kousei2</title>
+  <script id="enty-theme-boot">
+    (function () {
+      var root = document.documentElement;
+      function readable(hex) {
+        var f = function (i) {
+          var v = parseInt(hex.substr(i, 2), 16) / 255;
+          return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+        };
+        var L = 0.2126 * f(1) + 0.7152 * f(3) + 0.0722 * f(5);
+        return 1.05 / (L + 0.05) >= (L + 0.05) / 0.0567 ? "#ffffff" : "#0d141d";
+      }
+      try {
+        var hash = (location.hash.match(/theme=([^&]+)/) || [])[1];
+        var raw = hash
+          ? atob(decodeURIComponent(hash))
+          : localStorage.getItem("enty-theme") || "{}";
+        var state = JSON.parse(raw) || {};
+        var mode = state.mode || "auto";
+        if (mode === "auto") {
+          mode = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        root.setAttribute("data-theme", mode);
+        var custom = (state.custom || {})[mode] || {};
+        for (var key in custom) {
+          if (!/^#[0-9a-f]{6}$/i.test(custom[key])) continue;
+          root.style.setProperty("--accent-" + key, custom[key]);
+          if (key === "char1" || key === "char2") {
+            root.style.setProperty("--on-" + key, readable(custom[key]));
+          }
+        }
+      } catch (e) {
+      }
+      try {
+        var saved = JSON.parse(localStorage.getItem("enty-avatars") || "{}");
+        var rules = "";
+        var accounts = {"char1":"@SolDoFaZizK_dame","char2":"@astra_dame"};
+        for (var name in accounts) {
+          var gen = root.getAttribute("data-gen-" + name);
+          var url = gen && saved[name + ":" + gen];
+          if (!url || url.slice(0, 11) !== "data:image/") continue;
+          var at = '.ttobot-status[data-account="' + accounts[name] + '"] .ttobot-avatar';
+          rules += at + '{background-image:url("' + url + '");background-size:cover;background-position:center}';
+          rules += at + " img{visibility:hidden}";
+        }
+        if (rules) {
+          var style = document.createElement("style");
+          style.id = "enty-avatar-style";
+          style.textContent = rules;
+          document.head.appendChild(style);
+        }
+      } catch (e) {
+      }
+      try {
+        if (window.self !== window.top) root.classList.add("in-pane");
+      } catch (e) {
+        root.classList.add("in-pane");
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="../style/ttobot.css">
+</head>
+<body>
+<div class="ttobot-status" data-account="@SolDoFaZizK_dame">
+  <div class="ttobot-avatar-wrapper">
+    <div class="ttobot-avatar"><img src="https://media.planet.moe/accounts/avatars/117/043/349/728/539/134/original/ba4907cd580a8c5b.png" alt="profile" /></div>
+    <div class="ttobot-name">디아토비라 텐카</div>
+  </div>
+  <div class="ttobot-content">
+    <div class="ttobot-content-text">여러부운~ 기계 재미없죠? (이런다.)</div>
+    
+  </div>
+  <div class="ttobot-time">2026년 8월 11일 오후 09:20</div>
+  </div>
+
+<div class="ttobot-status" data-account="@astra_dame">
+  <div class="ttobot-avatar-wrapper">
+    <div class="ttobot-avatar"><img src="https://media.planet.moe/accounts/avatars/117/042/803/367/656/820/original/4607616c7c1b0b8f.png" alt="profile" /></div>
+    <div class="ttobot-name">안야 코우세이</div>
+  </div>
+  <div class="ttobot-content">
+    <div class="ttobot-content-text">영업 방해 할 거면 혼자 나가.</div>
+    
+  </div>
+  <div class="ttobot-time">2026년 8월 11일 오후 09:22</div>
+  </div>
+
+<div class="ttobot-status" data-account="@SolDoFaZizK_dame">
+  <div class="ttobot-avatar-wrapper">
+    <div class="ttobot-avatar"><img src="https://media.planet.moe/accounts/avatars/117/043/349/728/539/134/original/ba4907cd580a8c5b.png" alt="profile" /></div>
+    <div class="ttobot-name">디아토비라 텐카</div>
+  </div>
+  <div class="ttobot-content">
+    <div class="ttobot-content-text">다메다메한 영업입니당.</div>
+    
+  </div>
+  <div class="ttobot-time">2026년 8월 11일 오후 09:25</div>
+  </div>
+  <script src="../search.js"></script>
+  <script src="../manifest.js"></script>
+  <script src="../theme.js"></script>
+</body>
+</html>
