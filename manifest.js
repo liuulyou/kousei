@@ -18,7 +18,7 @@ window.ENTY_MANIFEST = {
   "pages": {},
   "logs": [
     {
-      "file": "toots/kousei.html",
+      "file": "kousei.html",
       "month": 8,
       "day": 7,
       "part": null,
@@ -33,7 +33,7 @@ window.ENTY_MANIFEST = {
       "gens": {}
     },
     {
-      "file": "toots/kousei4.html",
+      "file": "kousei4.html",
       "month": 8,
       "day": 9,
       "part": null,
@@ -48,7 +48,7 @@ window.ENTY_MANIFEST = {
       "gens": {}
     },
     {
-      "file": "toots/kousei2.html",
+      "file": "kousei2.html",
       "month": 8,
       "day": 11,
       "part": null,
@@ -63,7 +63,7 @@ window.ENTY_MANIFEST = {
       "gens": {}
     },
     {
-      "file": "toots/kousei3.html",
+      "file": "kousei3.html",
       "month": 8,
       "day": 11,
       "part": null,
