@@ -1,15 +1,8 @@
-/* 1. 한자 폰트 불러오기 */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&display=swap');
-
-/* 2. 한자 폰트 적용 지정 */
-.reader-name,
-.ttobot-name,
-aside b,
-.reader-side b {
-  font-family: 'Noto Serif KR', 'KoPubWorldBatang', serif !important;
-}
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
-
+/* 사이드바 한자 이름 2개에만 고딕 적용 */
+aside.reader-side .reader-name b {
+  font-family: var(--font-sans) !important;
+}
 :root {
   --radius: 10px;
   --font-sans: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
